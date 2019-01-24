@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/form.css">
+    <title>SoftUni Beers</title>
+</head>
+
+<body>
+    <nav>
+        <div class="topnav">
+            <a class="logo" href="index.html"><img src="images/logo.png"></a>
+            <a href="index.html">Home</a>
+            <a href="all-beers.html">See All Beers</a>
+            <a class="active" href="order.html">Order a Beer</a>
+            <a class="right" href="register.html">Register</a>
+            <a class="right" href="login.html">Log in</a>
+        </div>
+    </nav>
+
+    <main>
+        <center>
+            <h1>
+                Register
+            </h1>
+            <br />
+            <form action="order/" method="POST">
+                <label for="brandSelect">Brand</label>
+                <select name="brand" id="brandSelect">
+                    <option selected disabled>Select a brand</option>
+                    <option value="corona">Corona Extra 330ml</option>
+                    <option value="stella">Stella Artois 500ml</option>
+                    <option value="carlsberg">Carlsberg 330ml</option>
+                    <option value="heineken">Heineken 330ml</option>
+                </select>
+                <label for="quantitySelect">Quantity</label>
+                <input type="number" min="1" max="15" placeholder="Enter amount of beers(1-15)" name="quantity" id="quantitySelect">
+                <label for="destinationSelect">Destination</label>
+                <select name="destination" id="destinationSelect">
+                    <option selected disabled>Select destination</option>
+                    <option value="sofia">Sofia</option>
+                    <option value="plovdiv">Plovdiv</option>
+                    <option value="varna">Varna</option>
+                    <option value="burgas">Burgas</option>
+                    <option value="veliko tarnovo">Veliko Tarnovo</option>
+                </select>
+                <label for="birthdateInput">Enter your birthdate</label>
+                <input placeholder="mm/dd/yyyy" type="date" name="birthdate" id="birthdateInput">
+                <label for="commentInput">Got an option, comment, recommendation? Share it with us!</label>
+                <textarea name="comment" id="commentInput" placeholder="Share your opinion with us!"></textarea>
+                <!-- <input placeholder="Share your opinion with us!" type="text"> -->
+                <input type="submit" value="Submit Order" id="orderBeerButton">
+            </form>
+        </center>
+    </main>
+
+    <footer>
+        <hr />
+        <p><em>&copy; 2017 &ndash; SoftUni Beers</em></p>
+    </footer>
+</body>
+
+</html>
