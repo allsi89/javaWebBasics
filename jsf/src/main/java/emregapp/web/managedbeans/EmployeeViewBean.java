@@ -19,7 +19,6 @@ public class EmployeeViewBean {
     private EmployeeService employeeService;
     private ModelMapper modelMapper;
 
-
     public EmployeeViewBean() {
     }
 
@@ -43,17 +42,22 @@ public class EmployeeViewBean {
         this.viewModels = viewModels;
     }
 
+
     public BigDecimal getTotalMoneyNeeded() {
         BigDecimal sum = BigDecimal.ZERO;
-        this.viewModels.stream()
-                .map(EmployeeViewModel::getSalary)
-                .forEach(sum::add);
+        for (EmployeeViewModel viewModel : viewModels) {
+            sum = sum.add(viewModel.getSalary());
+        }
         return sum;
     }
 
-    public BigDecimal getAverageMoneyNeeded(){
-        return this.getTotalMoneyNeeded()
-                .divide(BigDecimal.valueOf(this.viewModels.size()), RoundingMode.valueOf(2));
-    }
 
+    public BigDecimal getAverageMoneyNeeded() {
+        if(this.getTotalMoneyNeeded().equals(BigDecimal.ZERO)){
+            return BigDecimal.ZERO;
+        } else {
+            return this.getTotalMoneyNeeded()
+                    .divide(BigDecimal.valueOf(this.viewModels.size()), RoundingMode.valueOf(2));
+        }
+    }
 }
