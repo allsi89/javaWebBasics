@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="templates/base-layout.xhtml">
     <ui:define name="main-content">
@@ -36,8 +36,12 @@
                         <td>#{cat.breed}</td>
                         <td>#{cat.color}</td>
                         <td>#{cat.gender}</td>
-                        <td>#{cat.price}</td>
-                        <td>#{cat.addedOn}</td>
+                        <td>$#{cat.price}</td>
+                        <td>
+                          <h:outputText value="#{cat.addedOn}">
+                            <f:convertDateTime pattern="yyyy-mm-dd"/>
+                          </h:outputText>
+                        </td>
                     </tr>
                 </p:repeat>
                 </tbody>
