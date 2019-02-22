@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <ui:include src="templates/head.xhtml"/>
+</h:head>
+<h:body>
+    <div class="container-fluid">
+        <ui:include src="templates/user-navbar.xhtml"/>
+        <main>
+            <hr class="my-2"/>
+            <div class="text-center mt-3">
+                <h:link value="Welcome, #{session.getAttribute('userName')}"
+                        outcome="profile?username=#{session.getAttribute('userName')}"
+                        class="h4 text-info"/>
+            </div>
+            <hr class="my-4"/>
+            <div class="container">
+                <div class="row mb-3 d-flex justify-content-around">
+                    <ui:repeat value="#{userHomeBean.users}" var="user">
+                        <div class="col-md-2 d-flex flex-column text-center">
+                            <h:graphicImage library="casebook-lib"
+                                            name="img/#{user.gender.name().toLowerCase()}.png"
+                                            class="img-thumbnail" width="200" height="200"/>
+                            <h5 class="text-center">#{user.username}</h5>
+                            <h:form>
+                                <h:commandButton value="Add Friend"
+                                                 action="#{userHomeBean.addFriend(user.id)}"
+                                                 class="btn btn-info"/>
+                            </h:form>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </div>
+            <hr class="my-3"/>
+        </main>
+        <ui:include src="templates/footer.xhtml"/>
+    </div>
+</h:body>
+</html>
