@@ -1,0 +1,7 @@
+package exam.repository;
+
+import exam.domain.entities.Document;
+
+public interface DocumentRepository extends GenericRepository<Document, String>{
+    public boolean delete(String id);
+}
